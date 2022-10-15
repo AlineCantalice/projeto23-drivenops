@@ -1,12 +1,8 @@
-name: PullRequest
-on:
-  pull_request:
-    branchs:
-      - main
+name: Pull Request validator
+on: [pull_request]
 jobs:
   PullRequest:
-    runs-on: self-hosted
-    timeout-minutes: 20
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -21,6 +17,6 @@ jobs:
         file_name: .env.test
         fail_on_empty: true
     - name: Run tests
-      run: docker-compose -f docker-compose-test.yml run node_app npm run test
+      run: docker-compose -f docker-compose_test.yml run node_app npm run test
     - name: Build
-      run: npm install && npm run build
+      run: cd back-end && npm i && npm run build 
