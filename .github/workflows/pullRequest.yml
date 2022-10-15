@@ -1,10 +1,12 @@
 name: PullRequest
 on:
   pull_request:
-    branches: [ main ]
+    branchs:
+      - main
 jobs:
   PullRequest:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    timeout-minutes: 20
     steps:
     - name: Checkout
       uses: actions/checkout@v3
