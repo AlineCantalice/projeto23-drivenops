@@ -17,6 +17,6 @@ jobs:
           file_name: .env.test
           fail_on_empty: true
       - name: Run tests
-        run: cd back-end docker-compose -f docker-compose_test.yml run node_app npm run test
+        run: docker-compose -f docker-compose_test.yml run node_app npm run test
       - name: Build
         run: cd back-end && npm i && npm run build
